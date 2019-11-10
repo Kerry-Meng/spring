@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="teacher"
+		class="com.softtron.spring.domains.pc标签的使用.Teacher" c:clacs-ref="banji" >
+		<property name="teacherName" value="李老师"></property>
+	</bean>
+	
+	<bean id="banji" class="com.softtron.spring.domains.pc标签的使用.Clacs">
+		<property name="clacsName" value="六班"></property>
+	</bean>
+
+</beans>

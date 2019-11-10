@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- <bean id="car" class="com.softtron.spring.domains.TCar"> <property 
+		name="carName" value="大众" /> <property name="frame" ref="frame"></property> 
+		</bean> <bean id="frame" class="com.softtron.spring.domains.TFrame"> <property 
+		name="frameName" value="半悬挂式" /> </bean> -->
+
+	<!-- <bean id="cla" class="com.softtron.spring.domains.构造器函数.Clacs"> <property 
+		name="clacsName" value="一班"></property> </bean> <bean id="teacher" class="com.softtron.spring.domains.构造器函数.Teacher"> 
+		<constructor-arg ref="cla"></constructor-arg> </bean> -->
+
+	<!-- <bean id="teacher" class="com.softtron.spring.domains.静态工厂方法实例化.Teacher"> 
+		<constructor-arg ref="banji"></constructor-arg> </bean> <bean id="banji" 
+		class="com.softtron.spring.domains.静态工厂方法实例化.Clacs" factory-method="getInstance"> 
+		</bean> -->
+
+	<!-- <bean id="banji" class="com.softtron.spring.domains.实例化工厂方式.Clacs"></bean> 
+		<bean id="bj" factory-bean="banji" factory-method="getInstance"></bean> <bean 
+		id="teacher" class="com.softtron.spring.domains.实例化工厂方式.Teacher"> <constructor-arg 
+		ref="bj"></constructor-arg> </bean> -->
+
+	<bean id="DB" class="com.softtron.spring.domains.DB">
+		<property name="username" value="pinmao"></property>
+		<property name="password" value="123456"></property>
+		<property name="driver" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1:3306/pinmao"></property>
+	</bean>
+
+	<!-- <bean id="DB" class="com.softtron.spring.domains.DB" p:username="pinmao" 
+		p:password="123456" p:url="jdbc:mysql://127.0.0.1:3306/pinmao" p:driver="com.mysql.jdbc.Driver"> 
+		</bean> -->
+
+	<!-- <bean id="DB" class="com.softtron.spring.domains.DB"> <property name="properties"> 
+		<value> username=pinmao password=123456 url=jdbc:mysql://127.0.0.1:3306/pinmao 
+		driver=com.mysql.jdbc.Driver </value> </property> </bean> -->
+
+	<!-- <bean id="DBUtil" class="com.softtron.spring.domains.DBUtil"> <property 
+		name="db"> <bean class="com.softtron.spring.domains.DB"> <property name="properties"> 
+		<value> username=pinmao password=123456 url=jdbc:mysql://127.0.0.1:3306/pinmao 
+		driver=com.mysql.jdbc.Driver </value> </property> </bean> </property> </bean> -->
+
+	<!-- 集合注入 -->
+	<!-- <bean id="student" class="com.softtron.spring.domains.集合.Student"> 
+		<property name="hobby"> <map> <entry key="basketball" value="篮球" /> </map> 
+		</property> </bean> -->
+
+	<!-- <bean id="student" class="com.softtron.spring.domains.集合.Student"> 
+		<property name="eat"> <set> <value>1</value> <value>2</value> <value>3</value> 
+		<value>3</value> <ref bean="DB" /> </set> </property> </bean> -->
+
+	<!-- <bean id="student" class="com.softtron.spring.domains.集合.Student"> 
+		<property name="properties"> <props> <prop key="username">[xiaohong]</prop> 
+		<prop key="password">[123456]</prop> </props> </property> </bean> -->
+
+	<bean id="st" class="com.softtron.spring.domains.集合.Student">
+		<property name="foot">
+			<list>
+				<value>a list element followed by a reference</value>
+				<ref bean="DB" />
+			</list>
+		</property>
+	</bean>
+</beans>

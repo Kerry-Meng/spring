@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+	<bean id="frame" class="com.softtron.spring.domains.自定义作用域.TFrame"></bean>
+	<bean id="car" class="com.softtron.spring.domains.自定义作用域.TCar"
+		autowire="byName" scope="thread"></bean>
+
+	<!-- 通过注解的方式进行找到方法的自定义作用域 -->
+	<!-- <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer"> 
+		<property name="scopes"> <map> <entry key="thread"> <bean class="com.softtron.spring.domains.自定义作用域.ThreadScope" 
+		/> </entry> </map> </property> </bean> -->
+
+	<bean id="thread"
+		class="com.softtron.spring.domains.自定义作用域.ThreadScope"></bean>
+
+</beans>

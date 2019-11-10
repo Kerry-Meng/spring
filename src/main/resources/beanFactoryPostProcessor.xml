@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="user" init-method="init" destroy-method="destory"
+		p:username="xiaozhang"
+		class="com.softtron.spring.domains.beanfactorypostprocessor.TUser"></bean>
+	<bean id="beanFactory"
+		class="com.softtron.spring.domains.beanfactorypostprocessor.BeanFactoryInit"></bean>
+	<bean id="backProcessor"
+		class="com.softtron.spring.domains.beanfactorypostprocessor.BackProcessor"></bean>
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:jdbc.properties" />
+	</bean>
+	<bean id="db"
+		class="com.softtron.spring.domains.beanfactorypostprocessor.DatabaseConnection"
+		p:DBinfo="p:username=${jdbc.username},p:password=${jdbc.password},p:driver=${jdbc.driver}, 
+		p:url=${jdbc.url}">
+	</bean>
+</beans>
